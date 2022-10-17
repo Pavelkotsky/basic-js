@@ -14,7 +14,8 @@ const { NotImplementedError } = require('../extensions/index.js');
  * ]) => 3`
  *
  */
-function countCats(cats) {
+
+ const countCats = (cats) => {
   if (cats === undefined || cats.length == 0) {
       return 0;
   }
@@ -23,11 +24,21 @@ function countCats(cats) {
   let countOfCats = 0;
 
   for (const cat of cats) {
-      if (cat.includes(stringForSearching)) { 
-          countOfCats++;
-          continue;
-      }
-  }
+    let countEars = 0;
+    for (const element of cat) {
+        if (element === stringForSearching) {
+            countEars++;
+        }
+
+        if (countEars > 1) {
+            break;
+        }
+    }
+
+    if (countCats == 1) {
+        countCats++;
+    }
+}
 
   return countOfCats;
 }
